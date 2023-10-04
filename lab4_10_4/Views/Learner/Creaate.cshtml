@@ -1,0 +1,43 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model Enrollment
+
+<div>
+    <div class="text-danger"></div>
+    <form asp-controller="Student" asp-action="Create" method="post" class="mt-3">
+        <div style="margin-top:7px" class="form-group row">
+            <label asp-for="CourseID" class="col-sm-2 col-form-label"></label> <div class="col-sm-10">
+                <select asp-for="CourseID" class="custom-select mr-sm-2"
+                       >
+                    @foreach (var crouse in ViewBag.AllCrouses)
+                    {
+                        <option value={@crouse.CourseID}>@crouse.Title</option>
+                    }
+                   </select>
+            </div>
+        </div>
+
+        <div style="margin-top:7px" class="form-group row">
+            <label asp-for="LearnerID" class="col-sm-2 col-form-label"></label> <div class="col-sm-10">
+                <select asp-for="LearnerID" class="custom-select mr-sm-2">
+                    @foreach (var learner in ViewBag.AllLearners)
+                    {
+                        <option value={@learner.LearnerID}>@learner.FirstMidName + " " + @learner.LastName</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div style="margin-top:7px" class="form-group row">
+            <label asp-for="Grade" class="col-sm-2 col-form-label"></label> <div class="col-sm-10">
+                <input asp-for="Grade" class="form-control" placeholder="Grade">
+            </div>
+        </div>
+    </form>
+</div>
+
+
